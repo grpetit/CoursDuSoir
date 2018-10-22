@@ -1,19 +1,51 @@
 import React, { Component } from 'react'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
 
-import {NavLink} from 'react-router-dom'
-
+} from 'reactstrap';
 class Header extends Component {
-    render () {
-        const titre="mon application"
-        const listTasks="List"
-        const newTask="New"
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen: false
+        };
+    }
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    render() {
+        const titre = "mon application"
+        const listTasks = "List"
+        const newTask = "New"
         return (
             <div>
-                {titre}  
-                <NavLink to="/">{listTasks} </NavLink>/
-                <NavLink to="/new">{newTask}</NavLink>
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">{titre}</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink to="/">{listTasks} </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink to="/new">{newTask}</NavLink>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
             </div>
-        )
+
+);
     }
 }
 

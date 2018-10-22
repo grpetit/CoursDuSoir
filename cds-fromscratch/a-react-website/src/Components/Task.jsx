@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import { Card, Button, CardTitle } from 'reactstrap';
 
 class Task extends Component {
     render () {
         return (
-            <div onClick={()=>this.props.updatePedro(this.props.index)}>
-                {this.props.task.title} /
-                {this.props.task.isDone} 
-            </div>
+                <Card body>
+                    <CardTitle>{this.props.task.title}</CardTitle>
+                    <Button  onClick={()=>this.props.updatePedro(this.props.index)}>{this.props.task.isDone} </Button>
+                </Card>
         )
     }
 }
