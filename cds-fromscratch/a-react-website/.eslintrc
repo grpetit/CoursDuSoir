@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": true
+  },
+  "extends": "airbnb",
+  "globals": {
+    "localStorage": true
+  },
+  "rules": {
+    "react/no-unescaped-entities": false
+  }
+}

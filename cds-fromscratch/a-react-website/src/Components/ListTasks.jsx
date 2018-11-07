@@ -1,37 +1,33 @@
-import React, { Component } from 'react'
-import Task from './Task'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Task from './Task';
 
-const list = [
-    { title: "tache numéro 1", isDone: "false" },
-    { title: "tache numéro 2", isDone: "false" },
-    { title: "tache numéro 3", isDone: "true" },
-]
 
 class ListTasks extends Component {
-    constructor (props) {
-        super(props)
-        this.state={
-            pedro: list
+  updateList = (taskIndex) => {
+    this.props.dispatch(
+      {
+        type: '',
+        taskIndex,
+      },
+    );
+  }
+
+  render() {
+    const { list } = this.props;
+    return (
+      <div>
+        {
+          list.map((item, index) => <Task task={item} updatePedro={this.updateList} index={index} />)
         }
-    }
-
-    updateList=(taskIndex)=>{
-
-        const pedroTmp = this.state.pedro
-        pedroTmp[taskIndex].isDone = pedroTmp[taskIndex].isDone==="true"?"false":"true"
-
-        this.setState({pedro:pedroTmp})
-    }
-    
-    render() {
-        return (
-            <div>
-                {
-                    this.state.pedro.map((item, index) => <Task task={item} updatePedro={this.updateList} index={index}/>)
-                }
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
-export default ListTasks
+const mapStateToProps = (state) => {
+  console.log(state.list[0]);
+  return state;
+};
+
+export default connect(mapStateToProps)(ListTasks);

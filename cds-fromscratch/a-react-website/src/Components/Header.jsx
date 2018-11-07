@@ -1,52 +1,51 @@
 import React, { Component } from 'react'
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
 
 } from 'reactstrap';
 class Header extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isOpen: false
-        };
-    }
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
-    render() {
-        const titre = "mon application"
-        const listTasks = "List"
-        const newTask = "New"
-        return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">{titre}</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink to="/">{listTasks} </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink to="/new">{newTask}</NavLink>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
-
-);
-    }
+  render() {
+    const titre = "mon application"
+    const listTasks = "List"
+    const newTask = "New"
+    return (
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">{titre}</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink to="/">{listTasks} </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/new">{newTask}</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
 }
 
 export default Header
