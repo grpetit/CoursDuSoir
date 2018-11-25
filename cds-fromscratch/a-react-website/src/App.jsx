@@ -20,7 +20,6 @@ const reducer = (state = { list: listDb }, { taskIndex }) => {
     state.list[taskIndex].isDone = !state.list[taskIndex].isDone;
   }
   return { ...state, list: [...state.list] };
-  // return JSON.parse(JSON.stringify(state ));
 };
 const store = createStore(reducer);
 
